@@ -7,7 +7,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { StoreModule } from '@ngrx/store';
 import { reducers, metaReducers } from './ngrx';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-
+import { EffectsModule } from '@ngrx/effects';
+import { CountriesEffects } from './ngrx/effects/countries.effects';
 
 @NgModule({
   declarations: [AppComponent],
@@ -16,7 +17,8 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
     HttpClientModule,
     AppRoutingModule,
     StoreModule.forRoot(reducers, { metaReducers }),
-    StoreDevtoolsModule.instrument()
+    StoreDevtoolsModule.instrument(),
+    EffectsModule.forRoot([CountriesEffects])
   ],
   providers: [],
   bootstrap: [AppComponent]

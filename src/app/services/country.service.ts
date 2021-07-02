@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Contenants } from '../enums/contenants.enum';
-import { CountryRaw } from '../ngrx/models/api-response.interface';
+import { Countries } from '../ngrx/models/countries.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +12,7 @@ export class CountryService {
 
   constructor(private http: HttpClient) { }
 
-  getCounties$(contenant: Contenants): Observable<CountryRaw[]> {
-    return this.http.get<CountryRaw[]>(`${environment.endpoints.countries}/${contenant}`);
+  getCounties$(contenant: Contenants): Observable<Countries[]> {
+    return this.http.get<Countries[]>(`${environment.endpoints.countries}/${contenant}`);
   }
 }
