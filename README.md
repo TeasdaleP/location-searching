@@ -1,3 +1,5 @@
+[![Build](https://github.com/TeasdaleP/location-searching/actions/workflows/push.yml/badge.svg)](https://github.com/TeasdaleP/location-searching/actions/workflows/push.yml)
+
 # LocationSearching
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.7.
