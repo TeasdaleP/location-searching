@@ -1,1 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
+
+$grey: #6c757d;
+$dark-grey: #343a40;
+$light-grey: #FBF9F8;
+$white: #FFFFFF;
+
+$primary: #000098;
+$primary-gradient-31: rgba(0, 0, 152, 0.31);
+$primary-gradient-16: rgba(0, 0, 152, 0.16);
+
+body {
+    font-family: 'Quicksand', sans-serif;
+    background-color: $light-grey;
+    line-height: none;
+}

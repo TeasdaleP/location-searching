@@ -1,16 +1,17 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, fakeAsync, inject, TestBed, tick } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
 
 import { DropdownComponent } from './dropdown.component';
 
-describe('DropdownComponent', () => {
+describe('Dropdown Component', () => {
   let component: DropdownComponent;
   let fixture: ComponentFixture<DropdownComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ DropdownComponent ]
+      declarations: [DropdownComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
@@ -19,7 +20,16 @@ describe('DropdownComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('Should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('Should be able to select an item in the dropdown', () => {
+    component.options = ['one', 'two'];
+    const selectElement = fixture.debugElement.query(By.css('select'))
+    fixture.detectChanges();
+    fixture.whenStable().then(() => {
+      expect(selectElement.nativeElement.value).toEqual('One');
+    });
+  })
 });

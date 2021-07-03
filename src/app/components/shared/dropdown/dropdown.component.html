@@ -1,1 +1,5 @@
-<p>dropdown works!</p>
+<div class="dropdown">
+    <select class="dropdown-select" [ngModel]="selected" (ngModelChange)="selectedItem($event)">
+        <option *ngFor="let option of options" [ngValue]="option">{{ option | titlecase }}</option>
+    </select>
+</div>

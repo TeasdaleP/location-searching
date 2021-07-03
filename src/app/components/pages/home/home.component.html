@@ -1,0 +1,26 @@
+<div class="home">
+    <div class="home-container">
+        <div class="home-inner">
+            <div class="home-card">
+                <h4 class="home-heading" id="regionHeading">Please select a region</h4>
+                <div class="home-content" id="regionDropdown">
+                    <app-dropdown [options]=regionNameList (selected)='onSelectedRegion($event)'></app-dropdown>
+                </div>
+                <ng-container *ngIf="selectedRegion && countryNameList">
+                    <h4 class="home-heading" id="countryHeading">Please select a country</h4>
+                    <div class="home-content" id="countryDropdown">
+                        <app-dropdown [options]=countryNameList (selected)='onSelectedCountry($event)'></app-dropdown>
+                    </div>
+                </ng-container>
+            </div>
+        </div>
+    </div>
+    <div class="home-container" *ngIf="selectedRegion && selectedCountry">
+        <div class="home-inner">
+            <div class="home-card">
+                <app-table></app-table>
+            </div>
+        </div>
+    </div>
+</div>
+

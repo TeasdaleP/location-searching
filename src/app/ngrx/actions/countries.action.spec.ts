@@ -1,5 +1,5 @@
 import { Contenants } from 'src/app/enums/contenants.enum';
-import { mockCountries } from 'src/app/services/countries.helper';
+import { mockCountries } from 'src/app/helpers/countries.helper';
 import { CountriesFailure, COUNTRIES_FAILURE, LoadCountries, LoadCountriesSuccess, LOAD_COUNTRIES, LOAD_COUNTRIES_SUCCESS } from './countries.action';
 
 describe('Countries action', () => {

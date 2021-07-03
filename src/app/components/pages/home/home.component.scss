@@ -1,0 +1,46 @@
+@import '../../../../styles.scss';
+
+.home {
+    &-container {
+        display: flex;
+        flex: 100%;
+        padding: 2em 2em 2em 2em;
+    }
+    
+    &-inner {
+        margin: auto;
+    }
+
+    &-content {
+        padding: 1em 0 1em 0;
+    }
+
+    &-card {
+        border: 1px solid;
+        border-image-source: linear-gradient(180deg, $primary-gradient-31 0%, $primary 78.65%);
+        box-shadow: 0px 8px 32px 0px $primary-gradient-16;
+        background-color: $white;
+        border-radius: 1em 1em 1em 0;
+        padding: 2em 2em 2em 2em;
+        height: 100%;
+        min-width: 18.75em;
+        max-width: 56.25em;
+    }
+
+    &-heading {
+        font-size: 1.5em;
+        font-weight: 300;
+        text-align: center;
+    }
+}
+
+.home-heading::after {
+    content: '';
+    display: block;
+    width: 6.25em;
+    height: 0.0625em;
+    margin: auto;
+    background-color: $primary;
+    position: relative;
+    top: 0.625em;
+  }

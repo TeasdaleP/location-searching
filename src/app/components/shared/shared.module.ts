@@ -5,9 +5,11 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { RouterModule } from "@angular/router";
 
 import { DropdownComponent } from "./dropdown/dropdown.component";
+import { TableComponent } from "./table/table.component";
 
 const SHARED_COMPONENTS = [
-    DropdownComponent
+    DropdownComponent,
+    TableComponent
 ]
 
 @NgModule({

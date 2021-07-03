@@ -4,7 +4,7 @@ import { HttpClientTestingModule, HttpTestingController } from "@angular/common/
 import { CountryService } from './country.service';
 import { environment } from 'src/environments/environment';
 import { Contenants } from '../enums/contenants.enum';
-import { mockCountries } from './countries.helper';
+import { mockCountries } from '../helpers/countries.helper';
 
 describe('Country Service', () => {
     let service: CountryService;
