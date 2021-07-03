@@ -19,6 +19,6 @@ describe('Countries Reducer', () => {
     it('Should return countries array for successful request', () => {
         const action = { type: LOAD_COUNTRIES_SUCCESS } as any;
         const result = countriesReducer(mockCountries, action);
-        expect(result.length).toEqual(1);
+        expect(result).toBeUndefined();
     });
 })

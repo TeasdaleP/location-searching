@@ -15,6 +15,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   public regionNameList: Array<string> = [];
   public countryNameList: Array<string> = [];
+  public countries: Countries[];
   public selectedCountry: string;
   public selectedRegion: Contenants;
 
@@ -46,6 +47,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   private getCountryList(): void {
     this.subscription.push(
       this.store.select(store => store.countries).subscribe(countries => {
+        this.countries = countries;
         countries.forEach(country => {
           this.countryNameList.push(country.name)
         })

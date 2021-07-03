@@ -18,7 +18,7 @@
     <div class="home-container" *ngIf="selectedRegion && selectedCountry">
         <div class="home-inner">
             <div class="home-card">
-                <app-table></app-table>
+                <app-table [countries]=countries [selected]=selectedCountry></app-table>
             </div>
         </div>
     </div>

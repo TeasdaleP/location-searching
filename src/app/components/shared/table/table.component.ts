@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Countries } from 'src/app/ngrx/models/countries.interface';
 
 @Component({
   selector: 'app-table',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./table.component.scss']
 })
 export class TableComponent implements OnInit {
+  @Input() public countries: Countries[];
+  @Input() public selected: string;
 
   constructor() { }
 
