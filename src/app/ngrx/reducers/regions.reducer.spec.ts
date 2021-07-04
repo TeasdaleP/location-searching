@@ -7,4 +7,10 @@ describe('Regions Reducer', () => {
         const result = regionsReducer(undefined, action);
         expect(result).toEqual(initalRegionState);
     })
+
+    it('Should return state on the catch call', () => {
+        const action = { type: 'DEFAULT' } as any;
+        const result = regionsReducer(undefined, action);
+        expect(result).toEqual([]);
+    })
 })

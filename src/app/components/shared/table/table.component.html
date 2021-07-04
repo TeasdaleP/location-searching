@@ -5,15 +5,17 @@
         <th>Population</th>
         <th>Currencies</th>
         <th>Flag</th>
+        <th>Weather</th>
     </tr>
     <ng-container *ngFor="let country of countries">
         <ng-container *ngIf="country.name === selected">
             <tr>
                 <td>{{ country.name }}</td>
                 <td>{{ country.capital }}</td>
-                <td>{{ country.population }}</td>
+                <td>{{ country.population | number }}</td>
                 <td>{{ country.currencies[0].name }}</td>
                 <td><img [src]=country.flag class="table-flag"></td>
+                <td><img src=forecast class="table-flag"></td>
             </tr>
         </ng-container>
     </ng-container>
