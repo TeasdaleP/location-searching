@@ -6,7 +6,6 @@ import { mockCountries } from "src/app/helpers/countries.helper";
 
 import { HomeComponent } from "./home.component";
 import { Contenants } from "src/app/enums/contenants.enum";
-import { By } from "protractor";
 
 describe('HomeComponent', () => {
   let component: HomeComponent;
@@ -43,7 +42,7 @@ describe('HomeComponent', () => {
     it('Should be able to populate the region name list', () => {
       component.ngOnInit();
       store.select(store => store).subscribe(() => {
-        expect(component.regionNameList[0]).toBe(Contenants.Asia);
+        expect(component.regionList[0]).toBe(Contenants.Asia);
       });
     });
   
@@ -54,7 +53,7 @@ describe('HomeComponent', () => {
   
     it('Should be able to assign country to selectedCountry', () => {
       component.onSelectedRegion(Contenants.Europe as string);
-      expect(component.selectedRegion).toEqual('europe');
+      expect(component.selectedRegion).toEqual(Contenants.Europe);
     });
   });
 
@@ -62,7 +61,7 @@ describe('HomeComponent', () => {
 
     it('Shouldnt see the country header before selecting region', () => {
       expect(component.selectedRegion).toBeUndefined();
-      expect(component.countryNameList.length).toEqual(0);
+      expect(component.countryList.length).toEqual(0);
 
       component.ngOnInit();
       const regionHeader = fixture.debugElement.nativeElement.querySelector('#regionHeading').textContent;
@@ -74,7 +73,7 @@ describe('HomeComponent', () => {
 
     it('Shouldnt see the country content before selecting region', () => {
       expect(component.selectedRegion).toBeUndefined();
-      expect(component.countryNameList.length).toEqual(0);
+      expect(component.countryList.length).toEqual(0);
 
       component.ngOnInit();
       const regionContent = fixture.debugElement.nativeElement.querySelector('#regionDropdown');
@@ -87,14 +86,14 @@ describe('HomeComponent', () => {
 
     it('Should active countries dropdown when selecting region', () => {
       expect(component.selectedRegion).toBeUndefined();
-      expect(component.countryNameList.length).toEqual(0);
+      expect(component.countryList.length).toEqual(0);
 
       component.ngOnInit();
       const noRegionContent = fixture.debugElement.nativeElement.querySelector('#countryDropdown');
       expect(noRegionContent).toBeNull();
 
       component.selectedRegion = Contenants.Europe;
-      component.countryNameList = ['London', 'Paris', 'Madrid'];
+      component.countryList = ['London', 'Paris', 'Madrid'];
       fixture.detectChanges();
       
       const regionContent = fixture.debugElement.nativeElement.querySelector('#countryDropdown');

@@ -1,4 +1,4 @@
 export enum Contenants {
-    Europe = 'europe',
-    Asia = 'asia'
+    Europe = 'Europe',
+    Asia = 'Asia'
 }

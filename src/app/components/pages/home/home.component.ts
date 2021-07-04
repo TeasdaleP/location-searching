@@ -1,9 +1,10 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { combineLatest, Observable, Subscription } from 'rxjs';
 import { AppState } from 'src/app/ngrx';
 import { Store } from '@ngrx/store';
 import { Countries } from 'src/app/ngrx/models/countries.interface';
 import { Contenants } from 'src/app/enums/contenants.enum';
+import { Regions } from 'src/app/ngrx/models/regions.interface';
 
 @Component({
   selector: 'app-home',
@@ -12,21 +13,25 @@ import { Contenants } from 'src/app/enums/contenants.enum';
 })
 export class HomeComponent implements OnInit, OnDestroy {
   private subscription: Subscription[] = [];
+  private countries$: Observable<Countries[]>;
+  private regions$: Observable<Regions[]>;
 
-  public regionNameList: Array<string> = [];
-  public countryNameList: Array<string> = [];
+  public regionList: string[] = [];
+  public countryList: string[] = [];
   public countries: Countries[];
   public selectedCountry: string;
   public selectedRegion: Contenants;
 
-  constructor(private store: Store<AppState>) { }
+  constructor(private store: Store<AppState>) {
+    this.regions$ = this.store.select(store => store.regions);
+    this.countries$ = this.store.select(store => store.countries)
+  }
 
   ngOnInit(): void {
     this.subscription.push(
-      this.store.select(store => store.regions).subscribe(regions => {
-        regions.forEach(region => {
-          this.regionNameList.push(region.name);
-        })
+      combineLatest([this.regions$, this.countries$]).subscribe(([regions, countries]) => {
+        this.regionList = regions.map(region => region.name);
+        this.countries = countries;
       })
     )
   }
@@ -37,22 +42,15 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   public onSelectedRegion(selected): void {
     this.selectedRegion = selected as Contenants;
-    this.getCountryList();
+    const regionalCountries = this.getRegionsalSpecificCountries(selected);
+    this.countryList = regionalCountries.map(country => country.name);
   }
 
   public onSelectedCountry(selected): void {
     this.selectedCountry = selected;
   }
 
-  private getCountryList(): void {
-    this.subscription.push(
-      this.store.select(store => store.countries).subscribe(countries => {
-        this.countries = countries;
-        countries.forEach(country => {
-          this.countryNameList.push(country.name)
-        })
-      })
-    )
+  private getRegionsalSpecificCountries(region: Contenants): Countries[] {
+    return this.countries.filter(country => country.region === region);
   }
-
 }

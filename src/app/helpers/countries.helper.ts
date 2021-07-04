@@ -1,3 +1,4 @@
+import { Contenants } from "../enums/contenants.enum";
 import { Countries } from "../ngrx/models/countries.interface";
 
 export const mockCountries: Countries[] = [
@@ -20,7 +21,7 @@ export const mockCountries: Countries[] = [
         nativeName: 'native',
         numericCode: 'COUNT',
         population: 1234,
-        region: 'asia',
+        region: Contenants.Asia,
         regionalBlocs: [{}],
         subregion: 'south-asia',
         timezones: ['GMT+1', 'GMT+2'],
